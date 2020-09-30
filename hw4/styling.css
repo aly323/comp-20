@@ -1,0 +1,89 @@
+/* --- COMP20 - HW4 ---- *
+* --- XML Song List ---- *
+* -- Author: Amy Ly -- */
+
+
+/* ------- XML file --------- *
+* --goes with styling.css -- */
+
+@charset "utf-8";
+
+setlist{
+    font-family: Georgia;
+    background-image: url("https://i.pinimg.com/originals/98/ff/8f/98ff8f63dbeac75164523c3b5d2c2c4d.jpg");
+   /* background-attachment: fixed; */
+}
+
+header {
+    display: block;
+    font-size: 72px;
+    font-weight: 400px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+
+}
+
+song {
+    display: block; 
+    border-radius: 25px;
+    border: 2px solid grey;
+    padding: 20px;
+    margin: 10px 10px 15px 10px;
+
+}
+/*   song:hover{
+        background-color: #beeca98a   
+    }
+*/
+setnum {
+    padding: 20px;
+    margin: 10px 10px 50px 0px;
+    font-size: 60px; 
+    font-weight: 500px;
+    float: left;
+    border-right: solid 2px grey;
+
+}
+
+
+title {
+    font-size: 30px; 
+    font-weight: 700;
+}
+
+artist {
+    display:block;
+    font-size: 20px; 
+    font-weight: 500px;
+    margin-bottom: 10px;
+}
+    artist:before{
+        content:"By: ";
+    }
+
+
+descript {
+    display:block;
+    margin-bottom: 3px;
+}
+    descript:before{
+        content:"About: ";
+    }
+
+
+genre {
+    display:block;
+    margin-bottom: 3px;
+}
+    genre:before{
+        content:"Genre: ";
+    }
+
+
+year {
+    display:block;
+}
+    year:before{
+        content:"Year released: ";
+    }

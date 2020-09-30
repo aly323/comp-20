@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- COMP20 - HW4 -->
+<!-- XML Song List -->
+<!-- Author: Amy Ly -->
+
+
+<!--- ***** XML file ***** --> 
+<!-- goes with styling.css -->
+
+<?xml-stylesheet type="text/css" href = "styling.css" ?>
+
+<setlist>
+
+    <header>XML Set List</header>
+    <song>
+        <setnum>1</setnum>
+
+            <title>In The Middle</title>
+            <artist>dodie</artist>
+            <descript>Dorothy Miranda "Dodie" Clark is an English singer-songwriter, author, and YouTuber from Epping, Essex. Known for her light melodies juxtaposed by emotionally complex lyrics, Dodie began her career performing piano and ukulele covers and has since shifted to her own original songs.</descript>
+
+            <genre>Folk/Indie pop</genre>
+            <year>2017</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>2</setnum>
+
+        <title>Maniac</title>
+        <artist>Conan Grey</artist>
+        <descript>Conan Lee Gray is an American singer-songwriter and social media personality. Conan Gray started out uploading vlogs and covers to YouTube as a teenager from Georgetown, Texas.</descript>
+
+        <genre>Synth-pop/Pop</genre>
+        <year>2020</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>3</setnum>
+
+        <title>Hungover Sunday</title>
+        <artist>Christian French</artist>
+        <descript>Christian French is a pop singer-songwriter based in Los Angeles. Born on March 17, 1997, he grew up in Fishers, Indiana. He learned to play piano by watching YouTube instructionals and in high school started posting song covers on Soundcloud.</descript>
+
+        <genre>Pop</genre>
+        <year>2019</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>4</setnum>
+
+        <title>Flamin Hot Cheetos</title>
+        <artist>Clairo</artist>
+        <descript>Claire Elizabeth Cottrill known professionally as Clairo, is an American singer-songwriter. She rose to prominence following the release of her lo-fi song "Pretty Girl" on YouTube. Her professional debut was with the EP Diary 001, followed by her debut studio album Immunity.</descript>
+
+        <genre>Alternative/Indie</genre>
+        <year>2018</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>5</setnum>
+
+        <title>fever dream</title>
+        <artist>mxmtoon</artist>
+        <descript>Mxmtoon, also known as Maia, is an American singer-songwriter and social media personality from Oakland, California, known for singing and playing the ukulele. Her 2018 self-released EP, Plum Blossom, recorded on her laptop in her parents' guest bedroom, has been streamed over 100 million times.</descript>
+
+        <genre>Alternative/Indie</genre>
+        <year>2020</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>6</setnum>
+
+        <title>Ultimately</title>
+        <artist>Khai Dreams</artist>
+        <descript>Khai dreams is a half-Vietnamese singer and songwriter born and raised in the Pacific Northwest. Khai’s mellow vocals blend seamlessly with lo-fi beats and melodic instrumental progressions (the ukulele being a reoccurring favorite) to create tranquil soundscapes that soothe the soul. </descript>
+
+        <genre>Pop</genre>
+        <year>2017</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>7</setnum>
+
+        <title>Goodie Bag</title>
+        <artist>Still Woozy</artist>
+        <descript>Sven Gamsky, also known under the stage name Still Woozy, is an American singer/songwriter from Oakland, California. His music is released through the record label Still Woozy Productions Inc., under exclusive license to Interscope Records. Gamsky grew up in Moraga, California, in the San Francisco Bay Area.</descript>
+
+        <genre>Indie Pop</genre>
+        <year>2017</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>8</setnum>
+
+        <title>MF Gloom</title>
+        <artist>Strawberry Milk Cult</artist>
+        <descript>Milk Cult is an American, San Francisco-based, electronic band. Founded as a studio-only project in 1990, the band's nucleus comprises musicians Dale Flattum, Eric Holland and Mike Morasky. Milk Cult is known for their found-sound experiments and dense sample-based compositions, as well as their collaborations with numerous musical acts.</descript>
+
+        <genre>Alternative/Indie</genre>
+        <year>2019</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>9</setnum>
+        
+        <title>Space Cadet</title>
+        <artist>beabadoobee</artist>
+        <descript>Beatrice Laus, known professionally as Beabadoobee, is a Filipino-born British singer-songwriter. Since 2018, she has released five extended plays under Dirty Hit and has supported The 1975 during several legs of their Music for Cars Tour.</descript>
+
+        <genre>Alternative/Indie</genre>
+        <year>2019</year>
+
+    </song>
+
+
+
+    <song>
+        <setnum>10</setnum>
+
+        <title>Mariposa</title>
+        <artist>Peach Tree Rascals</artist>
+        <descript>Peach Tree Rascals are a music collective from San Jose, California. The group achieved fame with their song, "Mariposa," which went viral on TikTok. The group has been featured on New Music Friday and has received critical acclaim from Billboard, Pigeons and Planes, and MTV.</descript>
+
+        <genre>Alternative/Indie</genre>
+        <year>2019</year>
+
+    </song>
+
+</setlist>
