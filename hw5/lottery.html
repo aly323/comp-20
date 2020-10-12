@@ -43,16 +43,17 @@
             // prompt your user for their guesses
             var numGuess = prompt("Enter in winning numbers separated by a space", "7 17 29 35 45");
             var luckyGuess = prompt("Enter in lucky ball number", "17");
-        
-            var numMatch = 0;
-            var parsedNums = numGuess.split(" ");           // separate string into arrays of substrings 
 
+            var numMatch = 0;
+            var spacedNums = numGuess.split(" ");           // separate string into arrays of substrings 
+
+            var sortedGuesses = spacedNums.sort(function(a, b){return a-b});
 
             // see how many numbers match!
-            for(var i = 0; i < parsedNums.length; i++) {
+            for(var i = 0; i < sortedGuesses.length; i++) {
                 for(var j = 0; j < 5; j++)
                 {
-                    if (parsedNums[i] == nums[j] )
+                    if (sortedGuesses[i] == nums[j] )
                         numMatch++;
 
                 }
@@ -81,7 +82,7 @@
             }
             
             // write out the winning numbers
-            document.write("Winning numbers: <br>" + numGuess + "<br><br>");
+            document.write("Winning numbers: <br>" + sortedGuesses[0] + " " + sortedGuesses[1] + " " + sortedGuesses[2] + " " + sortedGuesses[3] + " " + sortedGuesses[4] + "<br><br>");
             document.write("Winning lucky ball number: <br>" + luckyGuess + " <br><br>");
             
             // write out what you won!
