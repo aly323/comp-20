@@ -1,0 +1,96 @@
+<!-- COMP20 - HW5b -->
+<!-- Quick Pick Lottery  -->
+<!-- Author: Amy Ly -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quick Pick</title>
+        <style>
+            .tostyle { display: block; font-size: 20px; padding: 5px; margin: 10px; background-color: rgba(253, 253, 253, 0.884); font-size: 24px;}
+            body { font-family: 'Trebuchet MS';
+                background-image: url("https://previews.123rf.com/images/onlollipops/onlollipops1601/onlollipops160100007/50997964-lottery-balls-background-pattern-vector-illustration.jpg");
+            }
+            h2 {font-size: 48px; background-color: rgba(255, 133, 133, 0.658); border: 20px;}
+        </style>
+    </head>
+    <body>
+        <h2>Welcome to QuickPick Lottery!</h2>
+        <div class="tostyle">
+        <script language="javascript">
+
+        function randomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+            var nums = [];                                  // creates an empty array
+
+            for(var i = 0; i < 5; i++)
+                nums[i] = randomInt(48) + 1;                // store 5 random numbers in the array
+    
+
+            var luckynum = randomInt(18) + 1;               // store lucky ball separately
+
+            nums.sort(function(a, b){return a-b});           // sort in ascending order
+
+            document.write("QuickPick numbers: <br> ");
+            for(var i = 0; i < 5; i++)                      // display the 5 numbers
+                document.write( nums[i] + " ");
+            
+            document.write("<br><br>")                          // display the lucky ball number
+            document.write("QuickPick lucky ball: <br>" + luckynum + "<br><br>")
+
+            // prompt your user for their guesses
+            var numGuess = prompt("Enter in winning numbers separated by a space", "7 17 29 35 45");
+            var luckyGuess = prompt("Enter in lucky ball number", "17");
+        
+            var numMatch = 0;
+            var parsedNums = numGuess.split(" ");           // separate string into arrays of substrings 
+
+
+            // see how many numbers match!
+            for(var i = 0; i < parsedNums.length; i++) {
+                for(var j = 0; j < 5; j++)
+                {
+                    if (parsedNums[i] == nums[j] )
+                        numMatch++;
+
+                }
+            }
+
+            // see if lucky ball matches
+            if(luckynum == luckyGuess)
+                  numMatch+=0.5;
+            
+            var winMessage;
+
+            // translate these matches into winnings
+            switch(numMatch)
+            {
+                case 5.5: winMessage = "$7,000 a WEEK for LIFE"; break;
+                case 5: winMessage = "$25,000 a YEAR for LIFE"; break;
+                case 4.5: winMessage = "$5,000"; break;
+                case 4: winMessage = "$200"; break;
+                case 3.5: winMessage = "$150"; break;
+                case 3: winMessage = "$20"; break;
+                case 2.5: winMessage = "$25"; break;
+                case 2: winMessage = "$3"; break;
+                case 1.5: winMessage = "$6"; break;
+                case 0.5: winMessage = "$4"; break;
+                default: winMessage = ""; break;
+            }
+            
+            // write out the winning numbers
+            document.write("Winning numbers: <br>" + numGuess + "<br><br>");
+            document.write("Winning lucky ball number: <br>" + luckyGuess + " <br><br>");
+            
+            // write out what you won!
+            if(winMessage != "")
+                document.write("You win! Payout: " + winMessage);
+            else 
+                document.write("You do not win anything :(");
+
+        </script>
+        </div>
+    </body>
+</html>

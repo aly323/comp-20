@@ -1,0 +1,69 @@
+<!-- COMP20 - HW5a -->
+<!-- Joe's Hotdog Stand -->
+<!-- Author: Amy Ly -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Joe's Hotdog Stand</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <h1>Welcome to Joe's Hotdogs!</h1>
+        <!--The template that will change as user inputs order-->
+        <h2>Your Order</h2>
+        <div id="numH"></div>
+        <div id="numF"></div>
+        <div id="numS"></div>
+        <br>
+        <div id="disc"></div>
+        <div id="subt"></div>
+        <div id="tax"></div>
+        <br>
+        <div id="total"></div>
+        
+        <!-------------------------------------------------------------------------------------------------------------->
+        <script language="javascript">
+        
+        // explain the website
+        alert("Welcome to Joe's Hotdogs! We sell hotdogs ($3.25 each), French Fries ($2.00 each) and Drinks ($1.50 each).")
+        
+        var hotdogs, fries, sodas, subTotal, finalTotal;
+
+        // takes in the order
+        hotdogs = prompt("How many hotdogs would you like to buy?");
+        fries = prompt("How many fries would you like to buy?");
+        sodas = prompt("How many sodas would you like to buy?");
+        
+        // changes corresponding parts of the html
+        document.getElementById("numH").innerHTML = "(" + hotdogs + ") Hotdogs: $" + (hotdogs*3.25).toFixed(2);
+        document.getElementById("numF").innerHTML = "(" + fries + ") Fries: $" + (fries*2).toFixed(2);
+        document.getElementById("numS").innerHTML = "(" + sodas + ") Sodas: $" + (sodas*1.5).toFixed(2);
+        
+
+        // calculates subtotal
+        subTotal = hotdogs*3.25 + fries*2 + sodas*1.5;
+
+    
+        // applies discount if applicable
+        if (subTotal > 20) {
+            subTotal = 0.9*subTotal;
+            document.getElementById("disc").innerHTML = "Joe's special discount! (10% off)";
+        }
+
+        // displays subtotal
+        document.getElementById("subt").innerHTML = "Subtotal: $" + subTotal.toFixed(2);
+
+        // calculates tax and displays it
+        tax = .0625*subTotal;
+        document.getElementById("tax").innerHTML = "Meals tax: $" + tax.toFixed(2);
+
+        // calculates final total and displays it
+        finalTotal = subTotal + tax;
+        document.getElementById("total").innerHTML = "Total: $" + finalTotal.toFixed(2);
+
+        </script>
+
+    </body>
+</html>

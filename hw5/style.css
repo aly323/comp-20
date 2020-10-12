@@ -1,0 +1,22 @@
+body {
+    font-family: 'Trebuchet MS';
+    background-image: url("https://i.pinimg.com/originals/3c/8c/8b/3c8c8bd9ea85b7b4ac05d8061ca186f9.jpg");
+}
+
+h1 {
+    font-size: 48px;
+    background-color: rgba(255, 133, 133, 0.658); border: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    background-color: rgba(253, 253, 253, 0.884);
+}
+
+div {
+    display: block;
+    font-size: 20px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(253, 253, 253, 0.884);
+}
