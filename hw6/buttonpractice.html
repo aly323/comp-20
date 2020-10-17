@@ -1,0 +1,54 @@
+<!--- COMP20 - Extra Credit --->
+<!------ Button practice ------>
+<!------ Author: Amy Ly ------->
+
+<!doctype html>
+<html>
+    <head>
+        <title>Extra credit</title>
+        <style>
+            html {  
+                font-family:Georgia; 
+                text-align:center; 
+                background-color:rgba(100, 148, 237, 0.418); 
+                font-size: 18px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2> ~ ~ ~ Extra credit ~ Magic moving text ~ ~ ~</h2>
+        <p>Press the button and see what happens...</p>
+        <form>
+            <input type = "text" id = "left-box" name = "left-box">
+            <input type = "button" id = "button" value = "->" onclick = "mover()">
+            <input type = "text" id ="right-box" name = "right-box">
+        </form>
+
+        <script language="javascript">
+            function mover()
+            {   
+                // see if we need to move left or right
+                var status = document.getElementById("button").value;
+
+                if (status == "->") 
+                {
+                    var toMove = document.getElementById("left-box").value;
+                    document.getElementById("left-box").value = "";
+                    document.getElementById("right-box").value = toMove;
+
+                    document.getElementById("button").value = "<-";
+                }
+
+                else 
+                {
+                    var toMove = document.getElementById("right-box").value;
+                    document.getElementById("right-box").value = "";
+                    document.getElementById("left-box").value = toMove;
+
+                    document.getElementById("button").value = "->";
+                }
+            }
+        </script>
+    </body>
+</html>

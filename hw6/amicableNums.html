@@ -1,0 +1,174 @@
+<!---- COMP20 - HW6 ---->
+<!-- Amicable Numbers -->
+<!--- Author: Amy Ly --->
+
+<!doctype html>
+<html>
+<head>
+    <title>Amicable nums :)</title>
+    <style>
+        html {font-family: Georgia; background-color: rgba(100, 148, 237, 0.418)}
+        body {font-size: 18px; text-align: center;}
+    </style>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--------MAIN FUNCTION FOR AMICABILITY BELOW-------->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <script language="javascript">
+        function amicability()
+        {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+
+            factors1 = getFactors(num1);
+            factors2 = getFactors(num2);
+
+            showArray(factors1, "show-array1");
+            showArray(factors2, "show-array2");
+
+            sum1 = addArray(factors1);
+            sum2 = addArray(factors2);
+
+            if(sum1 == num2 && sum2 == num1)
+                document.getElementById("show-result").innerHTML = "Yes! These numbers are amicable.";
+
+            else
+                document.getElementById("show-result").innerHTML = "No, these numbers aren't amicable.";
+        }
+    </script>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!-------HELPER FUNCTIONS FOR AMICABILITY BELOW------>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <script language="javascript">
+        function isFactor(num, factor)
+        {
+            if(num % factor == 0)
+                return true;
+
+            else
+                return false;
+        }
+
+        function showArray(arr, divID)
+        {
+            result = "";
+            for(var i = 0; i < arr.length; i++)
+                 result += arr[i] + " ";
+
+            document.getElementById(divID).innerHTML = result;
+        }
+
+        function addArray(arr)
+        {
+            var sum = 0;
+            for(var i = 0; i < arr.length; i++)
+                sum = sum + arr[i];
+            
+            return sum;
+        }
+
+        function getFactors(num)
+        {
+            var factors = [];
+            for(var i = 1; i < num; i++)
+            {
+                if(isFactor(num, i))
+                    factors.push(i);
+            }
+            return factors;
+        }
+    </script>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!----------TEST FUNCTIONS FOR HELPERS ABOVE--------->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <script language="javascript">
+
+        function testIsFactor()
+        {
+            var toTest = prompt("Give me a number: ");
+            var factor = prompt("Give me a factor: ")
+            
+            if(isFactor(toTest, factor))
+                alert("Yes!" + factor + " is a factor of " + toTest);
+
+            else
+                alert("No! " + factor + " is NOT a factor of " + toTest);
+        }
+
+        function testShowArray()
+        {
+            var toTest = prompt("Give me an array of numbers to test: ", "");
+                toTest = toTest.split(" ");
+
+            for(var i = 0; i < toTest.length; i++)
+                    toTest[i] = parseInt(toTest[i]);
+
+            showArray(toTest, "test");
+        }    
+
+        function testAddArray()
+        {
+            var toTest = prompt("Give me an array to sum: ", "");
+            toTest = toTest.split(" ");
+
+            for(var i = 0; i < toTest.length; i++)
+                toTest[i] = parseInt(toTest[i]);
+
+            result = addArray(toTest);
+
+            alert("The array sum is:" + result);
+        }
+
+        function testGetFactors()
+        {
+            var toTest = prompt("Give me something to factor: ", "");
+            result = getFactors(toTest);
+
+            alert("The factors are: " + result);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h2> ~ ~ Amicability checker ~ ~ </h2>
+    <hr>
+
+    <form>
+        1st number: <input type = "text" id = "num1" name = "num1"> <br>
+        2nd number: <input type = "text" id ="num2" name = "num2"> <br> <br>
+        <input type = "button" value = "Check" onclick = "amicability()">
+
+    </form>
+    <br/> <hr>
+
+    <h3> Factors? </h3>
+
+        Factors of first number:
+        <div id="show-array1">&nbsp;</div> <br/>
+
+        Factors of second number:
+        <div id="show-array2">&nbsp;</div>
+
+    <br/> <hr>
+   
+    <h3> Amicability? </h3>
+
+        <div id="show-result">&nbsp;</div>
+
+    <hr>
+    
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!------------TESTING OF HELPER FUNCTIONS------------>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--<div id="test">&nbsp;</div>-->
+    <script language="javascript">
+    //    testIsFactor();
+    //    testShowArray();
+    //    testGetFactors();
+    //    testAddArray();
+    </script>
+</body>
+</html>
