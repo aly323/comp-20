@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Jade Delight</title>
+</head>
+
+
+<body>
+    <div class="header"></div>          <!-- ADDED THE HEADER HERE-->
+
+    <script language="javascript">
+
+
+        function MenuItem(name, cost)
+        {
+            this.name = name;
+            this.cost = cost;
+        }
+
+
+        menuItems = new Array(
+            new MenuItem("Chicken Chop Suey", 4.5),
+            new MenuItem("Sweet and Sour Pork", 6.25),
+            new MenuItem("Shrimp Lo Mein", 5.25),
+            new MenuItem("Moo Shi Chicken", 6.5),
+            new MenuItem("Fried Rice", 2.35)
+        );
+
+
+        function makeSelect(name, minRange, maxRange)
+        {
+            var t= "";
+            t = "<select name='" + name + "' size='1'>";
+            for (j=minRange; j<=maxRange; j++)
+            t += "<option>" + j + "</option>";
+            t+= "</select>"; 
+            return t;
+
+        }
+
+        /*-------------------------------------------------------------------------------------*/
+        /*-------------------------NEW CODE BLOCK STARTS HERE----------------------------------*/
+
+        function validate()
+        {   
+            err = false;
+
+            document.getElementById("errName").style.display = "none";
+            document.getElementById("errStreet").style.display = "none";
+            document.getElementById("errCity").style.display = "none";
+            document.getElementById("errPhone").style.display = "none";
+            document.getElementById("errPhone1").style.display = "none";
+
+            prelimCheck();
+            addressCheck();
+
+            if(!err)
+                printReceipt();
+
+
+            return !err; 
+        }
+
+
+        function prelimCheck()
+        {
+            if ($("[name='lname']").val() == "") {
+                document.getElementById("errName").innerHTML = "*Last name is required";
+                document.getElementById("errName").style.display = "inline-block";
+                $("[name='lname']").focus();
+                err = true;   
+            }
+
+            if ($("[name='phone']").val() == "") {
+                document.getElementById("errPhone").innerHTML = "*Phone number is required";
+                document.getElementById("errPhone").style.display = "inline-block";
+                $("[name='phone']").focus();
+                err = true;
+            }
+
+            if(!phoneCheck($("[name='phone']").val())){
+                document.getElementById("errPhone1").innerHTML = "*Phone number must be digits only (no dashes or spaces)";
+                document.getElementById("errPhone1").style.display = "inline-block";
+                $("[name='phone']").focus();
+                err = true;
+            }
+          }
+
+
+        function phoneCheck(phno) 
+        { 
+            if(phno.length != 10) {
+                return false;
+            } 
+
+            else {
+                for (var i = 0; i < phno.length; i++) 
+                {
+                    if (typeof parseInt(phno[i]) == NaN)       // check each character in this digit
+                        return false;
+                }
+                return true;
+            }
+        } 
+
+
+        function addressCheck()
+        {
+            var isChecked = $("[value='delivery']").attr("checked");
+            if (typeof isChecked !== typeof undefined && isChecked !== false) {
+
+                if ($("[name='street']").val() == "") {
+                    document.getElementById("errStreet").innerHTML = "*Street is required for delivery";
+                    document.getElementById("errStreet").style.display = "inline-block";
+                    $("[name='street']").focus();
+                    err = true;
+                }
+
+                if ($("[name='city']").val() == "") {
+                    document.getElementById("errCity").innerHTML = "*City is required for delivery";
+                    document.getElementById("errCity").style.display = "inline-block";
+                    $("[name='city']").focus();
+                    err = true;
+                }
+            }
+        }
+
+
+        function buyItem(selector, index)
+        {
+            $(selector).on('change', function() {
+
+                itemCost = menuItems[index].cost * ($(this).prop('selectedIndex'));
+                document.getElementsByName("cost")[index].value = itemCost.toFixed(2);
+
+
+                var newSubtotal = 0;
+
+                for (var i = 0; i < menuItems.length; i++) 
+                    newSubtotal += parseFloat(document.getElementsByName("cost")[i].value);
+
+                document.getElementById("subtotal").value = newSubtotal.toFixed(2);
+                document.getElementById("tax").value = (0.0625 * newSubtotal).toFixed(2);
+                document.getElementById("total").value = (1.0625 * newSubtotal).toFixed(2);
+
+            });
+
+        }
+
+
+        // TO DO: clean up and break up this code
+        // from https://www.w3schools.com/jsref/met_win_open.asp
+        function printReceipt()
+        {
+            // open another window and print out the recipt
+            var receipt = window.open("", "orderReceipt", "width=550,height=650");
+
+            receipt.document.write("<html><head>");
+            styleReceipt(receipt);
+            
+            receipt.document.write("<h1> Order Receipt </h1>");
+
+            d = new Date();
+
+            receipt.document.write("<body><p>Recieved: " + d + "</p>");
+            receipt.document.write("<p>Thank you for ordering from Jade Delight! Your order is listed below</p>");
+            
+            printOrder(receipt);
+
+            printETA(receipt, d);
+            
+            receipt.document.write("<p>You will be notified when your order is ready.</p>")
+            receipt.document.write("<p>Have a great day!</p></body></html>");
+        }
+
+        // style the popup window of the receipt
+        function styleReceipt (receipt)
+        {
+            receipt.document.write("<link rel='stylesheet' href='style.css'><title>Order Receipt</title></head><style> body {background-color: rgba(255, 255, 255, 0.315); padding: 45px; font-size: 20px; }</style>");
+            receipt.document.write("<title>Order Receipt</title></head>");
+        }
+
+        // receipt information of ordered items in a table
+        function printOrder (receipt)
+        {
+            var s = "<table border='0' cellpadding='3' style='font-size:20px;'><tr><th>Item Name</th><th>Amt</th><th>Cost</th></tr>";
+            
+            for (i = 0; i < menuItems.length; i++)
+            {
+                if ($("[name='quan" + i + "']").prop('selectedIndex') == 0)
+                    continue;
+                        
+                s += "<tr><td>" + menuItems[i].name + "</td>";
+                s += "<td>" + $("[name='quan" + i + "']").prop('selectedIndex') + "</td>";
+                s += "<td>$" + document.getElementsByName("cost")[i].value +"</td></tr>";
+            }
+            
+            s += "</table>";
+
+            total = document.getElementById("total").value;
+    
+            receipt.document.write(s);
+            receipt.document.write("<p style='background-color: #70b474; font-size: 20px; padding: 5px;'>Total cost: $" + total + "</p>");
+        }
+
+        function printETA (receipt, date)
+        {
+            receipt.document.write("<p>Estimated completion time is: <div style='background-color: #70b474; font-size: 30px; text-align: center; padding: 5px;'>");
+            
+            var isChecked = $("[value='pickup']").attr("checked");
+
+            if (typeof isChecked !== typeof undefined && isChecked !== false)
+                date.setMinutes(date.getMinutes() + 15);
+
+            else
+                date.setMinutes(date.getMinutes() + 30);
+
+            fullDate = "" + date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear();
+            time = "" + date.getHours() + ":" + date.getMinutes();
+    
+            receipt.document.write(fullDate + " " + time + "</div>");
+        }
+
+        /*---------------------------NEW CODE BLOCK ENDS HERE----------------------------------*/
+        /*-------------------------------------------------------------------------------------*/
+
+    </script>
+
+
+
+    <h1>Jade Delight</h1>
+
+
+    <!--------------------------------------------------------------------->
+    <!--------- MODIFIED TO ADD IN ERROR MSGS + HIDE FIELDS --------------->
+    <!--------------- AND THE PICTURE OF THE TREE ------------------------->
+
+
+    <form onsubmit="return validate()">
+
+        <figure>
+            <img src="https://www.bonsaitreegardener.net/wp-content/uploads/2015/04/jade-bonsai-tree.jpg">
+            <figcaption> Our bonzai tree wishes you peace and good luck! </figcaption>
+        </figure>
+
+        <p>First Name: <input type="text"  name='fname'/></p>
+
+        <p>Last Name*:  <input type="text"  name='lname'/></p>
+                <div id="errName" class="errMsg">&nbsp;</div>
+
+        <p class="method">Street: <input type="text"  name='street'/></p>
+                <div id="errStreet" class="errMsg">&nbsp;</div>
+
+        <p class="method">City: <input type="text"  name='city'/></p>
+                <div id="errCity" class="errMsg">&nbsp;</div>
+
+        <p>Phone*: <input type="text"  name='phone' /></p>
+                <div id="errPhone" class="errMsg">&nbsp;</div>
+                <div id="errPhone1" class="errMsg">&nbsp;</div>
+
+    <!--------------------------------------------------------------------->
+
+
+        <p> 
+            <input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup  
+            <input type="radio"  name='p_or_d' value = 'delivery'/>Delivery
+        </p>
+    
+
+    <!--------------------------------------------------------------------->
+    <!------------------- NEW CODE BLOCK STARTS HERE ---------------------->
+
+    <script language="javascript">
+    
+    $(document).ready(function() {
+
+        // update the checked attribute of delivery bc user selected it
+        $("[value='delivery']").click(function(){
+            $("[value='delivery']").attr("checked","checked");
+            $("[value='pickup']").removeAttr("checked");
+
+            $(".method").show();
+        });
+
+        // update the checekd attribute of pickup bc the user selected it
+        $("[value='pickup']").click(function(){
+            $("[value='pickup']").attr("checked","checked");
+            $("[value='delivery']").removeAttr("checked");
+
+            $(".method").hide();
+        });
+
+    });
+    </script>
+
+    <!-------------------- NEW CODE BLOCK ENDS HERE ----------------------->
+    <!--------------------------------------------------------------------->
+
+
+
+    <table border="0" cellpadding="3">
+    <tr>
+        <th>Select Item</th>
+        <th>Item Name</th>
+        <th>Cost Each</th>
+        <th>Total Cost</th>
+    </tr>
+
+
+        <script language="javascript">
+
+        var s = "";
+        for (i = 0; i < menuItems.length; i++)
+        {
+            s += "<tr><td>";
+            s += makeSelect("quan" + i, 0, 10);
+            s += "</td><td>" + menuItems[i].name + "</td>";
+            s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
+            s += "<td>$<input type='text' name='cost'/></td></tr>";
+        }
+        document.writeln(s);
+        </script>
+
+
+    </table>
+
+
+
+    <!--------------------------------------------------------------------->
+    <!------------------- NEW CODE BLOCK STARTS HERE ---------------------->
+
+    <script language = "javascript">
+    
+        $(document).ready(function() {
+
+            // initialize all costs in the item boxes to 0
+            for (var i = 0; i < menuItems.length; i++)
+                document.getElementsByName("cost")[i].value = 0;
+
+
+            // update item boxes when user selects a menuItem
+            for (var i = 0; i < menuItems.length; i++)
+                buyItem("[name='quan" + i + "']", i);
+
+        });
+
+    </script>
+
+    <!-------------------- NEW CODE BLOCK ENDS HERE ----------------------->
+    <!--------------------------------------------------------------------->
+
+
+    <p>Subtotal: $<input type="text"  name='subtotal' id="subtotal"/> </p>
+    <p>Mass tax 6.25%: $ <input type="text"  name='tax' id="tax"/> </p>
+    <p>Total: $ <input type="text"  name='total' id="total" /> </p>
+
+    <input type = "submit" value = "Submit Order" />
+
+</form>
+</body>
+</html>
+
+<!------- TO DO: -------
+- make the receipt popup look NICE
+--> 

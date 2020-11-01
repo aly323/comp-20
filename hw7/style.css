@@ -1,0 +1,93 @@
+html { 
+        font-family: 'Georgia';
+        background-image: url("https://img.freepik.com/free-photo/gray-painted-background_53876-94041.jpg?size=626&ext=jpg");
+        background-size: cover;
+        line-height: 1.6;
+    }
+
+
+h1 {
+    font-size: 48px;
+    background-color: #45a049;
+    padding: 20px 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+form {
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.315);
+    padding: 20px;
+    padding-left: 70px;
+}
+
+input[type=radio] 
+{ 
+    transform: scale(2); 
+    margin: 10px;
+}
+
+input[type=text], select {
+    font-family: 'Georgia';
+    padding: 7px 10px;
+    margin: 8px;
+    font-size: 18px;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type=submit] {
+    font-family: 'Georgia';
+    background-color: #4CAF50;
+    font-size: 25px;
+    color: white;
+    padding: 20px 30px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #6c9e6f;
+}
+
+.header {
+    background-color: #f1f1f1;
+    text-align: center;
+    background-image: url("https://t3.ftcdn.net/jpg/02/97/67/70/360_F_297677001_zX7ZzRq8DObUV5IWTHAIhAae6DuiEQh4.jpg");
+    background-size: cover;
+    height: 250px;
+
+}
+
+img {
+    float: right;
+    padding: 40px;
+    padding-right: 20px;
+    padding-top: 0px;
+    border-radius: 45%;
+    height: 300px;
+    width: 350px;
+}
+
+figure {
+    float: right;
+    padding-right: 30px;
+    font-size: 18px;
+}
+/* styling of error messages */
+.errMsg {
+    color: #D20E11; 
+    border: solid 2px #d20e11; 
+    display:none;  
+    background-color:rgba(255, 255, 255, 0.459);
+    padding: 1px 15px;
+}
+
+/* by default street and city fields are hidden */
+.method {
+    display:none;
+};
