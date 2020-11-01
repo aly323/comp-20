@@ -222,7 +222,7 @@
             else
                 date.setMinutes(date.getMinutes() + 30);
 
-            fullDate = "" + date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear();
+            fullDate = "" + (date.getMonth() + 1) + "/" + (date.getDay() + 1) + "/" + date.getFullYear();
             time = "" + date.getHours() + ":" + date.getMinutes();
     
             receipt.document.write(fullDate + " " + time + "</div>");
@@ -367,6 +367,3 @@
 </body>
 </html>
 
-<!------- TO DO: -------
-- make the receipt popup look NICE
---> 
