@@ -243,7 +243,7 @@
     <!--------------- AND THE PICTURE OF THE TREE ------------------------->
 
 
-    <form onsubmit="return validate()">
+    <form>
 
         <figure>
             <img src="https://www.bonsaitreegardener.net/wp-content/uploads/2015/04/jade-bonsai-tree.jpg">
@@ -296,6 +296,12 @@
 
             $(".method").hide();
         });
+        
+        // on submit, perform the validate function
+         $('form').submit(function() {
+              if(!validate())
+                 event.preventDefault();
+         });
 
     });
     </script>
