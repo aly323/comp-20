@@ -40,17 +40,18 @@ PDF file with listing of the code and  URL of the file working online
 09b - API Fun!
 
 Task:  Your assignment is  to explore and use an API.
+
 Requirements are:
-It must be free
-It must return the data in JSON format
-It must be accessible with a GET request
+- It must be free
+- It must return the data in JSON format
+- It must be accessible with a GET request
  
 Use the AJAX data pattern we learned to send a request to the API, retrieve some data and display the data. 
 
 Include content on the web page for the following information:
-describe the API you selected and what it does
-cite the website where you found it
-describe the options you used for the API request
-give two applications where this API would be helpful.
+  - describe the API you selected and what it does
+  - cite the website where you found it
+  - describe the options you used for the API request
+  - give two applications where this API would be helpful.
 
 Deliverables:  PDF with code - or link to code in github and URL 
