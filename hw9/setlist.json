@@ -1,4 +1,4 @@
-{ "setlist" : [
+[
 {
     "artist" : "dodie",
     "title" : "In The Middle",
@@ -68,4 +68,3 @@
     "genres" : ["Alternative", "Indie"],
     "year" : 2019
 } ]
-}
