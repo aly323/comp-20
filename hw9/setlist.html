@@ -27,11 +27,11 @@
 
                 </select>
 
-            <input type = "submit" value = "Filter" style = "background-color:rgb(238, 238, 255);"/>
+            <input type = "button" id = "filterbtn" value = "Filter" style = "background-color:rgb(238, 238, 255);"/>
         </form>
 
         <script language = "javascript">
-            $('form').submit(function() {
+            $('#filterbtn').on('click', function() {
                 if($("#filteroptions").prop('selectedIndex') == 0)
                     sieve(0);
 
