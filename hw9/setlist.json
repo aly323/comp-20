@@ -16,55 +16,55 @@
 {
     "artist" : "Christian French",
     "title" : "Hungover Sunday",
-    "genres" : ["Pop"],
+    "genre" : ["Pop"],
     "year" : 2019
 },
 
 {
     "artist" : "Clairo",
     "title" : "Flamin Hot Cheetos",
-    "genres" : ["Alternative", "Indie"],
+    "genre" : ["Alternative", "Indie"],
     "year" : 2018
 },
 
 {
     "artist" : "mxmtoon",
     "title" : "fever dream",
-    "genres" : ["Alternative", "Indie"],
+    "genre" : ["Alternative", "Indie"],
     "year" : 2010
 },
 
 {
     "artist" : "Khai Dreams",
     "title" : "Ultimately",
-    "genres" : ["Pop"],
+    "genre" : ["Pop"],
     "year" : 2017
 },
 
 {
     "artist" : "Still Woozy",
     "title" : "Goodie Bag",
-    "genres" : ["Indie-pop"],
+    "genre" : ["Indie-pop"],
     "year" : 2017
 },
 
 {
     "artist" : "Strawberry Milk Cult",
     "title" : "MF Gloom",
-    "genres" : ["Alternative", "Indie"],
+    "genre" : ["Alternative", "Indie"],
     "year" : 2019
 },
 
 {
     "artist" : "beabadoobee",
     "title" : "Space Cadet",
-    "genres" : ["Alternative", "Indie"],
+    "genre" : ["Alternative", "Indie"],
     "year" : 2019
 },
 
 {
     "artist" : "Peach Tree Rascals",
     "title" : "Marisposa",
-    "genres" : ["Alternative", "Indie"],
+    "genre" : ["Alternative", "Indie"],
     "year" : 2019
 } ]
