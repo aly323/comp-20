@@ -1,4 +1,4 @@
-[
+{ "setlist" : [
 {
     "artist" : "dodie",
     "title" : "In The Middle",
@@ -67,5 +67,5 @@
     "title" : "Marisposa",
     "genres" : ["Alternative", "Indie"],
     "year" : 2019
+} ]
 }
-]
