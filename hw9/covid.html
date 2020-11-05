@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Covid 19 API
+        </title>
+        <style>
+        html {
+            background-color:rgba(205, 92, 92, 0.575);
+            font-family: Georgia;
+            font-size: 20px;
+            line-height: 1.6;
+            padding-left: 30px;
+            }
+        
+        h1 {font-size: 30px;}
+        h2 {font-size: 26px;}
+        .question {font-style:italic; font-weight: 300;}
+
+        </style>
+    </head>
+    <body onload="getData()">
+        <script>
+        function getData() {
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+		    request.open("GET", "https://corona.lmao.ninja/v2/continents/Europe?yesterday&strict", true)
+
+			console.log("2 - opened request file");
+ 
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+					console.log("5 - response received");
+					result = request.responseText;
+					data = JSON.parse(result);
+					
+                    document.getElementById("casesNum").innerHTML = "Cases: " + data["cases"];
+                    document.getElementById("todayCasesNum").innerHTML = "Today's cases: " + data["todayCases"]; 
+					
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+					document.getElementById("casesNum").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("casesNum").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+
+			request.send();
+			console.log("4 - Request sent");
+		}
+    </script>
+    <h1>Europe COVID 19 Stats</h1>
+    <div id="casesNum">Loading...</div>
+    <div id="todayCasesNum">Loading...</div>
+    <hr>
+
+    <h2>Questions:</h2>
+    <div class="question"> Describe the API you selected and what it does</div>
+    <div> The API I selected has aggregate information about COVID 19 cases around the world. 
+        You can get the most recent amount of positive cases per country, as well as the amount of 
+        critical, recovered, and death cases. This API is just an example of the availability of public
+        health information available during this pandemic.
+    </div><br>
+
+    <div class="question"> Cite the website where you found it</div>
+    <div> I obtained this API documentation through
+        <a href src="https://documenter.getpostman.com/view/11144369/Szf6Z9B3?version=latest">this</a>  website.</div><br>
+    
+    <div class="question"> Describe the options you used for the API request</div>
+    <div> I obtained the COVID statistics in aggregate from countries in Europe, specifically looking 
+        at the total amount of positive cases and the amount of cases that popped up today.</div><br>
+    
+    <div class="question"> Give two applications where this API would be helpful.</div>
+    <div> 
+        <ul>
+            <li>This API is very useful for companies that want to seem updated and relevant during this pandemic. 
+                Just to provide statistics and raise awareness in their employees.</li>
+            <li>Another potential use for this API is for a student who is doing statistical research on COVID cases,
+                just to track their changes over time, factoring by the country.
+            </li>
+        </ul>
+    </div>
+
+    </body>
+
+</html>
